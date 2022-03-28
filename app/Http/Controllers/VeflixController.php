@@ -38,15 +38,20 @@ class VeflixController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'title' => 'required',
             'image' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg|max:2048',
             'synopsis' => 'required',
             'duration' => 'required',
             'genre' => 'required',
             'rating' => 'required'
+            
         ]);
+        
+//         $imageName = ​time​().​'.'​.​$​request​->​filename​->​extension​(); 
+//  ​       ​$​request​->image->​move​(​public_path​().​'/image/'​, ​$​imageName​);
 
         $input = $request->all();
         $veflix = veflix::create($input);
@@ -89,6 +94,7 @@ class VeflixController extends Controller
         $request->validate([
             'title' => 'required',
             'image' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg|max:2048',
             'synopsis' => 'required',
             'duration' => 'required',
             'genre' => 'required',

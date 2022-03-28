@@ -3,6 +3,13 @@
 
 <title>Add Movie | Veflix</title>
 
+@if(session('errors'))
+    <div class="alert alert-danger">
+        {{ session('errors') }}
+    </div>
+
+@endif
+
 <div class="list-group-item">
     <div class="row justify-content-start">
         <form action="/dashboard" method="POST">
