@@ -50,11 +50,17 @@ class VeflixController extends Controller
             
         ]);
         
-//         $imageName = ​time​().​'.'​.​$​request​->​filename​->​extension​(); 
-//  ​       ​$​request​->image->​move​(​public_path​().​'/image/'​, ​$​imageName​);
+        $imageName = time(). '.' . $request->image->extension();
+        $request->image->move(public_path('storage/image'), $imageName);
+        $veflix = veflix::create([
+            'title' => $request->title,
+            'image' => $imageName,
+            'synopsis' => $request->synopsis,
+            'duration' => $request->duration,
+            'genre' => $request->genre,
+            'rating' => $request->rating
+        ]);
 
-        $input = $request->all();
-        $veflix = veflix::create($input);
         return redirect('/dashboard')->with('success', ' Data berhasil dibuat');
     }
 
@@ -100,8 +106,18 @@ class VeflixController extends Controller
             'genre' => 'required',
             'rating' => 'required'
         ]);
-        
-        $veflix = veflix::find($id)->update($request->all());
+
+        $imageName = time(). '.' . $request->image->extension();
+        $request->image->move(public_path('storage/image'), $imageName);
+        $veflix = veflix::create([
+            'title' => $request->title,
+            'image' => $imageName,
+            'synopsis' => $request->synopsis,
+            'duration' => $request->duration,
+            'genre' => $request->genre,
+            'rating' => $request->rating
+        ]);
+
         return redirect('/dashboard')->with('success', 'Data telah diperbaharui');
     }
 

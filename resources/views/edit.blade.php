@@ -5,7 +5,7 @@
 
 <div class="list-group-item">
     <div class="row justify-content-start">
-        <form action="/dashboard/{{$veflix->id}}" method="POST">
+        <form action="/dashboard/{{$veflix->id}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method("PUT")
 

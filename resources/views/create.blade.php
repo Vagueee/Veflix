@@ -12,7 +12,7 @@
 
 <div class="list-group-item">
     <div class="row justify-content-start">
-        <form action="/dashboard" method="POST">
+        <form action="/dashboard" method="POST" enctype="multipart/form-data">
             @csrf
             <label for="title" class="form-label">Title</label>
             <input type="text" name="title" class="form-control" id="title">
